@@ -10,6 +10,14 @@ dotenv.config(); // ✅ Load .env for CORS_ORIGIN and DB
 const app = express();
 
 connectDB(); // ✅ Safe to keep here for Vercel
+.then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+        console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
+    })
+})
+.catch((err) => {
+    console.log("MONGO db connection failed !!! ", err);
+})
 
 app.use(cors({
   origin: process.env.CORS_ORIGIN,
