@@ -32,7 +32,8 @@ const registerUser =asyncHandler( async (req,res)=>{
     const { fullName,email,username,password } = req.body
     // console.log("email",email);
     // console.log(req.body,"req body");
-    
+        console.log(req.body,"req body");
+
 
     if(
         [fullName,email,username,password].some((field)=>field?.trim() === "")
@@ -83,6 +84,7 @@ const registerUser =asyncHandler( async (req,res)=>{
         avatarPublicId:avatar.public_id,
         coverimagePublicId:coverImage.public_id
     })
+    console.log("existedUser",user);
 
     const createdUser = await User.findById(user._id).select(
         "-password -refreshToken"
