@@ -18,3 +18,4 @@ connectDB()
 // })
 
 
+export default app;
